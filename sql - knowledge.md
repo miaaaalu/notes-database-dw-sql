@@ -239,3 +239,11 @@ WITH cte AS (
 DELETE FROM cte
 WHERE row_num > 1;
 ```
+# Common Function 
+- 根号 SQRT()
+- 平方 POWER()
+- 绝对值 ABS()
+- 连接 CONCAT
+- 提取 SUBSTR
+- Round down: FLOOR()
+- Round up: CEILING()
