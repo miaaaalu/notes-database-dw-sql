@@ -18,8 +18,27 @@ Currently, I am working as a Data Engineer for an IT academy company in Sydney, 
 Before this role,  I have also worked as a digital marketing specialist at a IT academy start-up in Auckland for two years. At that time, I was responsible for data reporting and visualization to deliver marketing and business insights for stakeholders.  Currently, I am looking for an opportunity to use my skills set, especially AWS and Snowflake in a cloud-native or a data-native tech company. 
 
 ## Project
-One of my project is a Datalake project that build an automation data pipleline from end to end on Aws Ecosystem to create a recomanndation system. This is a collrbation proejct, so I work with my teammate, and developer, and data scientist. 
+**Data Warehouse and Data Visualization (Muchao)**
+- Background: Building the Data Warehouse for DA Team to analysis learning performance.
+- High leve stage (RAESD): 
+    - Requirement analysis, with DA
+    - Archithce design, with Team Lead 
+    - ETL Pipeline, by using python in Lambda to filter and restructure data 
+    - Streaming Processing, by using event based trigger on AWS and snow streaming task on Snowflake.
+    - Data warehouse building, populating dimension tables and facttables 
 
-In the early stage, we discuss and meeting on a reguarly basis to confirm our data source and piepline desgin. Then I work with my teammate another data engineer to extrat the data to S3, and using Athena to query, preview and auditing our data. After that I using glue and databrew to trancformation our data, and shcdule them on a time basis by using Eventbridge and Lambda. Finally the processed data will store in S3 and using by enduser. 
+**Data Lake (Leo)**
+- Background: building a recommendation system to improve user experience, by processing [participants learning performance].
+- High level stage: (RDBMA)
+    - Requirement analysis, with DS
+    - Data Lake Architch Design, with DE team 
+    - Big Data Processing, with Glue ETL 
+    - Model Depolyment, by using endpoint, RestAPI, and Lmabda
+    - Automation Processing, by usign EventBridge 
+- Result: Finally productlize the project and create value for users . 
 
-another project is a 
+One of my Datalake project is building a recommendation system to improve user experience, by processing participants learning performance. This is a collrbation proejct, I repsonble for data engineering, work with developer and data scientist. 
+
+My main outcome in this project including 5 High leve steps: RDBMA
+
+Then finaly productlize the project and create value for users. 

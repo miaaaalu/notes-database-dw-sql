@@ -26,20 +26,25 @@
 - 合规性：数据可能是上述所有内容，但不合规。好像没那么重要？现在你有一个明文信用卡号流过你的数据管道，被写入日志文件等等。哎呀。
 - 及时性：当可用性或延迟问题阻止数据对其预期用途有价值时。根据用例和数据的不同，及时性预期可能从几分钟到无限变化。
 
-## 数据库三大范式（1NF,2NF,3NF）
-1NF, in relatiship models:
-- 同一列不能有多个值，或者不可重复
-- 每列都是不可再分的数据单元
+## Normalization 范式（1NF,2NF,3NF）
+> Normalization is a process that ensures that a data model is as efficient as possible, and doesn't introduce data errors. 
+  
+First Normal Form(1NF)
+- All the primary key attributes are defined
+    - Product_id (PK)
+    - Customer_id (PK)
+- There are no repeating gourps. (同一列不能有多个值，或者不可重复)
+- All attributes are dependent on the primary key
+    - Product_id --> Product_Name
+    - Customer_id --> Customer_Name, Customer_phone, ...
 
-2NF, based on 1NF
+Second Normal Form(2NF)
+- Based on 1NF 
 - 所有非键的属性是完全功能性的依赖于主键
-- 一个表只能描述一件事情
 
-3NF, based on 2NF
-- 所有非键的属性是主键直接相关，而不是间接相关
-
-
-
+Thrid Normal Form(3NF)
+- Based on 2NF 
+- 所有非键的属性是主键直接相关，而不是间接相关(Transitive Dependencies)
 
 ## What is star schema, in brief?
 - Star schema is also called the star join schema 
