@@ -17,7 +17,7 @@
 
 ER Diagram 是 Data Modelling 的一种，定义了数据库逻辑方面的架构，即你的 Table 如何去分布。
 
-### Data Modelling 
+### Data Modelling (ER Diagram)
 Data Model Steps 
 - Identify all entities and put them on paper
     - Entity: customer 
@@ -154,3 +154,6 @@ Desoupling Storage & Compute是Spark的一个重要概念，传统的Oracle数�
 - Log back up 
 
 Tools: Airflow, AWS Step Functions, Azure Data Factory, Google Cloud Composer
+
+# LINK 
+100个大数据常用中英文: https://zhuanlan.zhihu.com/p/99181726 

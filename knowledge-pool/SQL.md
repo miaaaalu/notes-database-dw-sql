@@ -1,10 +1,6 @@
-# Database and Data Warehouse Overview (For SQL   )
-- Traditional RDBMS: Oracle, Microsoft SQL Server, IBM DB2, MySQL
-- [MPP Database](https://www.integrate.io/blog/what-is-an-mpp-database/): Teradata(on-premise), BigQuery(cloud), Snowflake(cloud)
-- In Memory Database (IMDB): Sap Hana, Redis, Exasol
-- Big Data: Hive, SparkSQL, ClouderaIMPALA
+# 1. SQL Intro
 
-# SQL Skills Ranking 
+## SQL Skills Ranking 
 1. SELECT & WHERE 
 2. GROUP BY & Having
 3. Nested Query
@@ -13,7 +9,89 @@
 6. Range Selection
 7. Further Analytic Function
 
-# JOIN
+## SQL Components 
+### DDL (Data Definition Language)
+- `CREATE`
+- `DROP`
+    - 删除整张表
+- `ALTER`
+    - 修改表中的某个行，但是此命令在工业环境中不常用，常用的是对原表格进行back-up，然后构建一个新的表，从而形成Version Contro
+- `TRUNCATE`
+    - 将表中的所有数据抹除，但是表的逻辑关系还在
+- `COMMENT` 
+    - 注释作用
+    - Trouble Shooting
+- `RENAME`
+
+### DML (Data Manipulation Language)
+- `SELECT`
+- `INSERT`
+    - 新增某一行
+- `UPDATE`
+    - 99%情况下，`UPDATE`会和`WHERE`一起使用
+- `DELETE`
+    - 删除局部信息
+    - 也支持删除全部信息 
+
+### DCL (Data Control Language)
+- `GRANT` 
+    - 给予用户权限去access你管理权限下的database
+- `REVOKE`
+    - 取消用户权限去access你管理权限下的database
+
+### TCL (Transaction Control Language)
+- COMMIT
+    - 在执行了DDL的操作后，提交COMMIT在Master系统里进行更改，否则DDL的操作仅在自己的Session显示，其他session无法查看
+    - 比较安全的操作，就是关闭系统的Auto Commit功能
+- ROLLBACK
+    - 在执行了DDL的操作出错后，可以进行ROLLBACK
+
+### SQL Basic 
+- View
+    - Logical Exist for long query 
+    - Security Purpose. 假设仅开放部分数据给End-user看，就可以使用View
+- Index 
+    - Primary Index
+    - Second Index(for most RBDMS), 给予除了PK以外经常使用的某个Attribute索引，需要消耗Storage 
+- Window Function 
+    - `DENSE_RANK` 总计数变少，相同名次统一
+    - `RANK`       总计数不变，相同名次统一
+    - `ROW_NUMBER` 总计数不变，相同名次递增
+![](/knowledge-pool/assets/windowFunction.png)
+
+    - `LEAD` Future Analytics(+1)
+    - `LAG` Past Analytics(-1)
+    - `SUM` 
+    - `AVERAGE` 
+    - `NTILE`
+
+```sql
+-- PRECEDING
+SUM() OVER(ORDER BY column ROWS BETWEEN _ PRECEDING AND CURRENT ROW)
+-- FOLLOWING
+SUM() OVER(ORDER BY column ROWS BETWEEN CURRENT ROW AND _ FOLLOWING)
+-- PRECEDING AND FOLLOWING
+SUM() OVER(ORDER BY column ROWS BETWEEN _ PRECEDING AND _ FOLLOWING)
+```
+![](https://learnsql.com/blog/sql-window-functions-rows-clause/1.png)
+
+# 2. Semi-Structured Data Types (Snowflake)
+- VARIANT (支持储存OBJECT和ARRAY)
+- OBJECT (Structure，key-value pairs)
+- ARRAY
+Reference: [snowflake.sql](/knowledge-pool/snowflake.sql)
+
+## Load Data to Snowflake 
+Common Load Ways
+- Manual Upload, File to Stage 
+- Bulk Load by using Snowflake CML 
+- S3 Load by using Snowpipe
+
+## Common Steps:
+- Check Input Source
+    - Header、Timestamp、 
+
+# 3. JOIN
 ### **What is an SQL `JOIN`, and when do you need it?**
 
 - `JOIN` is an SQL clause used to connect two or more tables and get the result that is a combination of data from all the tables. 
@@ -46,7 +124,7 @@ When condition met, it
 ### **CROSSS JOIN**
 * returns the `Cartesian product` of rows from the tables in the join. In other words, it return each row from the first table with each row from the second table.
 
-# Common Table Expression (CTE)
+# 4. Common Table Expression (CTE)
 ### **What is Common Table Expression** 
 - CTE 是一个query的结果集合，它临时存在, 并且仅在更大查询的背景中使用。
 - CTE 与派生表（derived table）非常相似
@@ -70,7 +148,6 @@ NO
 ### **Are duplicate column names allowed in the CTE?**
 Duplicate names within a single CTE definition are not allowed. The number of column names specified must match the number of columns in the result set of the CTE_query_definition.
 
-
 ### **Can you DELETE the records from the CTE?**
 We can DELETE from some sql server version. 
 ```sql
@@ -83,7 +160,7 @@ DELETE
 FROM RemoveWinter
 ```
 
-# Common SQL Interview Questions 
+# 5. Common SQL Interview Questions 
 ### **1. What are the different subsets of SQL?**
 - DDL – It allows you to perform various operations on the database such as `CREATE`, `ALTER`, and `DELETE` objects.
 - DML – It allows you to access and manipulate data. It helps you to seletct,insert, update, delete and retrieve data from the database.
@@ -260,5 +337,22 @@ WHERE row_num > 1;
 - 绝对值 ABS()
 - 连接 CONCAT
 - 提取 SUBSTR
-- Round down: FLOOR()
-- Round up: CEILING()
+- Round down: FLOOR() 12.25-->12
+- Round up: CEILING() 12.25-->13
+- 去空格: LTRIME()/RTRIME()/TRIME()
+- 长度 LENGTH()
+- REPLACE(strin, from_str, to_str)
+- UNION/UNION ALL    
+
+（）	 Bracket 
+ ：	 Colon
+ ，	 Comma	
+ －	 Dash	
+ …	 Ellipsis	
+ ！	 Exclamation Mark
+ .	 Full Stop 
+ –	 Hyphen	連字號
+？ 	 Question Mark
+ ＂＂ Quotation Mark
+； 	 Semicolon
+/	 Slash	
