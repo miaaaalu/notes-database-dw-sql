@@ -66,7 +66,6 @@ Conceptual schema, Logical schema, Physical schema
 - Mapping Weak Entity Sets 
 - Mapping Hierarchical Entities 
 
-
 # Database Normalization 
 > - Normalization is the process of organizing the data in the database.
 >
@@ -97,3 +96,10 @@ Conceptual schema, Logical schema, Physical schema
 - There are no Transitive Dependency. 所有非键的属性是主键直接相关，而不是间接相关(Transitive Dependencies)
 
 ### BCNF 
+
+# Slowly Changing Dimension 
+- SCD I 
+    - 小作坊保留信息的方式，不做任何记录保留，一旦信息来源，就会over-write从前的记录
+- SCD II 
+    - 将历史信息保留在Dim Table里面
+    - Effective_Date, Expiry_Date, Current Flag 

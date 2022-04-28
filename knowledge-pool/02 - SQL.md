@@ -129,6 +129,7 @@ When condition met, it
 - CTE 是一个query的结果集合，它临时存在, 并且仅在更大查询的背景中使用。
 - CTE 与派生表（derived table）非常相似
 - CTE的结果不存储，仅在查询期间存在。
+- Recursive CTE (Looping )
 
 ### **How are CTE helpful?**
 - improves readability and ease in maintenance of complex queries and sub-queries.
