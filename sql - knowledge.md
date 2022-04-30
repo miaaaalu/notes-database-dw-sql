@@ -67,6 +67,34 @@ WITH RemoveWinter AS(
 DELETE
 FROM RemoveWinter
 ```
+# Aggregatio & Window Function
+-   `window function`
+
+    Window functions perform calculations on a set of rows, and **return a signle value for each row**.
+
+    Window using the `over()`clause, also can partition data on one or more columns.
+
+    Common Windown: Sum, Row Number, Rank, Dense Rank, Lag, Max
+
+-   `Aggreation function`
+
+    Aggregate function performs calculation on a set of values, and **returns a single value**. 
+    
+    Except for COUNT(*), aggregate functions ignore null values. Aggregate functions are often used with the GROUP BY clause of the SELECT statement.
+
+- `区别`
+
+    unlike the aggregate functions, windowing functions do not collapse the result of the rows into a single value. Instead, all the rows maintain their original identity and the calculated result is returned for every row.
+    
+    Window Function仅仅只会将结果附加到当前的结果上，它不会对已有的行或列做任何修改。而 Aggreation Function 仅仅会保留一行聚合结果。
+
+# 处理空值
+当table里出现空值的时候，有几种可能的处理方式，各自的优缺点是什么，你为什么要选择这种方式
+- 查询空值
+    -  `is null`. WHERE column_nameN IS NULL
+- 处理空值
+    - `ISNULL()`  The ISNULL() function takes two parameters and it enables us to replace NULL values with a specified value: `ISNULL (expression, replacement)`
+    - `COALESCE()`: The COALESCE() function takes unlimited parameters and returns the first non-null expression in a list.
 
 # Common SQL Interview Questions 
 ### **1. What are the different subsets of SQL?**
